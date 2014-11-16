@@ -1,5 +1,5 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
 
@@ -127,7 +127,7 @@
                 </configuration>
                 <executions>
                     <execution>
-                        <id>enforce</id>
+                        <id>verify-environment</id>
                         <phase>validate</phase>
                         <goals>
                             <goal>enforce</goal>
@@ -137,21 +137,40 @@
                                 <requireMavenVersion>
                                     <version>${maven.minversion}</version>
                                 </requireMavenVersion>
-                                <!-- <requireJavaVersion>
-                                    <version>1.8.0-25</version>
-                                </requireJavaVersion> -->
+                            </rules>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>enforce-build-stability</id>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>enforce</goal>
+                        </goals>
+                        <configuration>
+                            <rules>
+                                <requireProperty>
+                                    <property>project.build.sourceEncoding</property>
+                                </requireProperty>
+                                <requirePluginVersions>
+                                    <message>Best Practice is to always define plugin versions!</message>
+                                </requirePluginVersions>
+                            </rules>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>verify-dependencies</id>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>enforce</goal>
+                        </goals>
+                        <configuration>
+                            <rules>
                                 <requireReleaseDeps>
                                     <message>This RELEASE depends on SNAPSHOT dependencies!</message>
                                     <onlyWhenRelease>true</onlyWhenRelease>
                                 </requireReleaseDeps>
-                                <requirePluginVersions>
-                                    <message>Best Practice is to always define plugin versions!</message>
-                                </requirePluginVersions>
-                                <requireProperty>
-                                    <property>project.build.sourceEncoding</property>
-                                </requireProperty>
-                                <requireUpperBoundDeps />
-                                <DependencyConvergence />
+                                <requireUpperBoundDeps/>
+                                <DependencyConvergence/>
                             </rules>
                         </configuration>
                     </execution>
