@@ -12,6 +12,11 @@
     <description>Maven parent for this enterprises' projects</description>
     <url>https://github.com/codehall/maven-parent</url>
 
+    <organization>
+        <name>CodeHall</name>
+        <url>http://codehall.github.io</url>
+    </organization>
+
     <developers>
         <developer>
             <id>alexandreogrodovski</id>
@@ -26,10 +31,18 @@
         </developer>
     </developers>
 
-    <organization>
-        <name>CodeHall</name>
-        <url>http://codehall.github.io</url>
-    </organization>
+    <distributionManagement>
+        <repository>
+            <id>company-repository</id>
+            <name>Repository for releases</name>
+            <url>http://localhost</url>
+        </repository>
+        <snapshotRepository>
+            <id>company-repository</id>
+            <name>Repository for snapshots</name>
+            <url>http://localhost</url>
+        </snapshotRepository>
+    </distributionManagement>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -178,23 +191,5 @@
             </plugin>
         </plugins>
     </build>
-
-    <profiles>
-        <profile>
-            <id>integration</id>
-            <distributionManagement>
-                <repository>
-                    <id>company-repository</id>
-                    <name>Repository for releases</name>
-                    <url>http://localhost</url>
-                </repository>
-                <snapshotRepository>
-                    <id>company-repository</id>
-                    <name>Repository for snapshots</name>
-                    <url>http://localhost</url>
-                </snapshotRepository>
-            </distributionManagement>
-        </profile>
-    </profiles>
 
 </project>
