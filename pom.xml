@@ -1,5 +1,5 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
 
@@ -169,8 +169,8 @@
                                     <message>This RELEASE depends on SNAPSHOT dependencies!</message>
                                     <onlyWhenRelease>true</onlyWhenRelease>
                                 </requireReleaseDeps>
-                                <requireUpperBoundDeps/>
-                                <DependencyConvergence/>
+                                <requireUpperBoundDeps />
+                                <DependencyConvergence />
                             </rules>
                         </configuration>
                     </execution>
@@ -181,37 +181,19 @@
 
     <profiles>
         <profile>
-            <!-- I'm not certain about this.. -->
-            <id>release</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <artifactId>maven-enforcer-plugin</artifactId>
-                        <version>${maven.plugin.enforcer.version}</version>
-                        <configuration>
-                            <failFast>true</failFast>
-                        </configuration>
-                        <executions>
-                            <execution>
-                                <id>enforce-valid-release</id>
-                                <phase>validate</phase>
-                                <goals>
-                                    <goal>enforce</goal>
-                                </goals>
-                                <configuration>
-                                    <rules>
-                                        <requireReleaseVersion>
-                                            <message>
-                                                Version ${project.version} is not allowed for a RELEASE
-                                            </message>
-                                        </requireReleaseVersion>
-                                    </rules>
-                                </configuration>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
+            <id>integration</id>
+            <distributionManagement>
+                <repository>
+                    <id>company-repository</id>
+                    <name>Repository for releases</name>
+                    <url>http://localhost</url>
+                </repository>
+                <snapshotRepository>
+                    <id>company-repository</id>
+                    <name>Repository for snapshots</name>
+                    <url>http://localhost</url>
+                </snapshotRepository>
+            </distributionManagement>
         </profile>
     </profiles>
 
