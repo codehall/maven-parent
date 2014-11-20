@@ -59,6 +59,13 @@
         <maven.plugin.version.surefire>2.18</maven.plugin.version.surefire>
         <maven.plugin.version.jar>2.5</maven.plugin.version.jar>
         <maven.plugin.version.resources>2.7</maven.plugin.version.resources>
+
+        <appserver.development.port>10090</appserver.development.port>
+        <appserver.staging.host>127.0.0.1</appserver.staging.host>
+        <appserver.staging.port>10090</appserver.staging.port>
+        <appserver.production.host>127.0.0.1</appserver.production.host>
+        <appserver.production.port>10090</appserver.production.port>
+        <appserver.version>8.1.0.Final</appserver.version>
     </properties>
 
     <build>
