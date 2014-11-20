@@ -49,16 +49,16 @@
 
         <maven.minversion>3.0.4</maven.minversion>
 
-        <maven.plugin.clean.version>2.6.1</maven.plugin.clean.version>
-        <maven.plugin.install.version>2.5.2</maven.plugin.install.version>
-        <maven.plugin.site.version>3.4</maven.plugin.site.version>
-        <maven.plugin.deploy.version>2.8.2</maven.plugin.deploy.version>
-        <maven.plugin.dependency.version>2.9</maven.plugin.dependency.version>
-        <maven.plugin.enforcer.version>1.3.1</maven.plugin.enforcer.version>
-        <maven.plugin.compiler.version>3.2</maven.plugin.compiler.version>
-        <maven.plugin.surefire.version>2.18</maven.plugin.surefire.version>
-        <maven.plugin.jar.version>2.5</maven.plugin.jar.version>
-        <maven.plugin.resources.version>2.7</maven.plugin.resources.version>
+        <maven.plugin.version.clean>2.6.1</maven.plugin.version.clean>
+        <maven.plugin.version.install>2.5.2</maven.plugin.version.install>
+        <maven.plugin.version.site>3.4</maven.plugin.version.site>
+        <maven.plugin.version.deploy>2.8.2</maven.plugin.version.deploy>
+        <maven.plugin.version.dependency>2.9</maven.plugin.version.dependency>
+        <maven.plugin.version.enforcer>1.3.1</maven.plugin.version.enforcer>
+        <maven.plugin.version.compiler>3.2</maven.plugin.version.compiler>
+        <maven.plugin.version.surefire>2.18</maven.plugin.version.surefire>
+        <maven.plugin.version.jar>2.5</maven.plugin.version.jar>
+        <maven.plugin.version.resources>2.7</maven.plugin.version.resources>
     </properties>
 
     <build>
@@ -66,31 +66,31 @@
             <plugins>
                 <plugin>
                     <artifactId>maven-clean-plugin</artifactId>
-                    <version>${maven.plugin.clean.version}</version>
+                    <version>${maven.plugin.version.clean}</version>
                 </plugin>
                 <plugin>
                     <artifactId>maven-install-plugin</artifactId>
-                    <version>${maven.plugin.install.version}</version>
+                    <version>${maven.plugin.version.install}</version>
                 </plugin>
                 <plugin>
                     <artifactId>maven-site-plugin</artifactId>
-                    <version>${maven.plugin.site.version}</version>
+                    <version>${maven.plugin.version.site}</version>
                 </plugin>
                 <plugin>
                     <artifactId>maven-deploy-plugin</artifactId>
-                    <version>${maven.plugin.deploy.version}</version>
+                    <version>${maven.plugin.version.deploy}</version>
                 </plugin>
                 <plugin>
                     <artifactId>maven-dependency-plugin</artifactId>
-                    <version>${maven.plugin.dependency.version}</version>
+                    <version>${maven.plugin.version.dependency}</version>
                 </plugin>
                 <plugin>
                     <artifactId>maven-enforcer-plugin</artifactId>
-                    <version>${maven.plugin.enforcer.version}</version>
+                    <version>${maven.plugin.version.enforcer}</version>
                 </plugin>
                 <plugin>
                     <artifactId>maven-compiler-plugin</artifactId>
-                    <version>${maven.plugin.compiler.version}</version>
+                    <version>${maven.plugin.version.compiler}</version>
                     <configuration>
                         <source>1.8</source>
                         <target>1.8</target>
@@ -98,15 +98,15 @@
                 </plugin>
                 <plugin>
                     <artifactId>maven-surefire-plugin</artifactId>
-                    <version>${maven.plugin.surefire.version}</version>
+                    <version>${maven.plugin.version.surefire}</version>
                 </plugin>
                 <plugin>
                     <artifactId>maven-jar-plugin</artifactId>
-                    <version>${maven.plugin.jar.version}</version>
+                    <version>${maven.plugin.version.jar}</version>
                 </plugin>
                 <plugin>
                     <artifactId>maven-resources-plugin</artifactId>
-                    <version>${maven.plugin.resources.version}</version>
+                    <version>${maven.plugin.version.resources}</version>
                 </plugin>
             </plugins>
         </pluginManagement>
