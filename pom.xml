@@ -59,6 +59,9 @@
 		<maven.plugin.version.surefire>2.18</maven.plugin.version.surefire>
 		<maven.plugin.version.jar>2.5</maven.plugin.version.jar>
 		<maven.plugin.version.resources>2.7</maven.plugin.version.resources>
+		<maven.plugin.version.ejb>2.4</maven.plugin.version.ejb>
+		<maven.plugin.version.war>2.5</maven.plugin.version.war>
+		<maven.plugin.version.wildfly>1.0.2.Final</maven.plugin.version.wildfly>
 
 		<appserver.port.development>10090</appserver.port.development>
 		<appserver.port.staging>10090</appserver.port.staging>
@@ -101,10 +104,6 @@
 				<plugin>
 					<artifactId>maven-compiler-plugin</artifactId>
 					<version>${maven.plugin.version.compiler}</version>
-					<configuration>
-						<source>1.8</source>
-						<target>1.8</target>
-					</configuration>
 				</plugin>
 				<plugin>
 					<artifactId>maven-surefire-plugin</artifactId>
@@ -117,6 +116,14 @@
 				<plugin>
 					<artifactId>maven-resources-plugin</artifactId>
 					<version>${maven.plugin.version.resources}</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-ejb-plugin</artifactId>
+					<version>${maven.plugin.version.ejb}</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-war-plugin</artifactId>
+					<version>${maven.plugin.version.war}</version>
 				</plugin>
 			</plugins>
 		</pluginManagement>
