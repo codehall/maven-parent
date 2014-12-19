@@ -63,9 +63,9 @@
 		<maven.plugin.version.war>2.5</maven.plugin.version.war>
 		<maven.plugin.version.wildfly>1.0.2.Final</maven.plugin.version.wildfly>
 
-		<appserver.port.development>10090</appserver.port.development>
-		<appserver.port.staging>10090</appserver.port.staging>
-		<appserver.port.production>10090</appserver.port.production>
+		<appserver.port.development>9990</appserver.port.development>
+		<appserver.port.staging>9990</appserver.port.staging>
+		<appserver.port.production>9990</appserver.port.production>
 		<appserver.host.staging>127.0.0.1</appserver.host.staging>
 		<appserver.host.production>127.0.0.1</appserver.host.production>
 		<appserver.version>8.1.0.Final</appserver.version>
