@@ -62,6 +62,7 @@
         <maven.plugin.version.ejb>2.4</maven.plugin.version.ejb>
         <maven.plugin.version.war>2.5</maven.plugin.version.war>
         <maven.plugin.version.help>2.2</maven.plugin.version.help>
+        <maven.plugin.version.shade>2.3</maven.plugin.version.shade>
         <maven.plugin.version.wildfly>1.0.2.Final</maven.plugin.version.wildfly>
 
         <appserver.port.development>9990</appserver.port.development>
@@ -130,6 +131,10 @@
                 <plugin>
                     <artifactId>maven-help-plugin</artifactId>
                     <version>${maven.plugin.version.help}</version>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-shade-plugin</artifactId>
+                    <version>${maven.plugin.version.shade}</version>
                 </plugin>
             </plugins>
         </pluginManagement>
