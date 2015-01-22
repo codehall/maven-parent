@@ -17,20 +17,6 @@
         <url>http://codehall.github.io</url>
     </organization>
 
-    <developers>
-        <developer>
-            <id>alexandreogrodovski</id>
-            <name>Alexandre Ogrodovski</name>
-            <email>alexandreogrodovski@gmail.com</email>
-            <organization>CodeHall</organization>
-            <organizationUrl>http://codehall.github.io</organizationUrl>
-            <roles>
-                <role>developer</role>
-            </roles>
-            <timezone>-3</timezone>
-        </developer>
-    </developers>
-
     <distributionManagement>
         <repository>
             <id>company-repository</id>
@@ -45,26 +31,6 @@
     </distributionManagement>
 
     <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-
-        <maven.minversion>3.0.4</maven.minversion>
-
-        <maven.plugin.version.clean>2.6.1</maven.plugin.version.clean>
-        <maven.plugin.version.install>2.5.2</maven.plugin.version.install>
-        <maven.plugin.version.site>3.4</maven.plugin.version.site>
-        <maven.plugin.version.deploy>2.8.2</maven.plugin.version.deploy>
-        <maven.plugin.version.dependency>2.9</maven.plugin.version.dependency>
-        <maven.plugin.version.enforcer>1.3.1</maven.plugin.version.enforcer>
-        <maven.plugin.version.compiler>3.2</maven.plugin.version.compiler>
-        <maven.plugin.version.surefire>2.18</maven.plugin.version.surefire>
-        <maven.plugin.version.jar>2.5</maven.plugin.version.jar>
-        <maven.plugin.version.resources>2.7</maven.plugin.version.resources>
-        <maven.plugin.version.ejb>2.4</maven.plugin.version.ejb>
-        <maven.plugin.version.war>2.5</maven.plugin.version.war>
-        <maven.plugin.version.help>2.2</maven.plugin.version.help>
-        <maven.plugin.version.shade>2.3</maven.plugin.version.shade>
-        <maven.plugin.version.wildfly>1.0.2.Final</maven.plugin.version.wildfly>
-
         <appserver.port.development>9990</appserver.port.development>
         <appserver.port.staging>9990</appserver.port.staging>
         <appserver.port.production>9990</appserver.port.production>
@@ -72,73 +38,9 @@
         <appserver.host.production>127.0.0.1</appserver.host.production>
         <appserver.version>8.2.0.Final</appserver.version>
         <appserver.bom.version>8.2.1.Final</appserver.bom.version>
-
         <repo.address.snapshot>http://localhost</repo.address.snapshot>
         <repo.address.release>http://localhost</repo.address.release>
     </properties>
-
-    <build>
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <artifactId>maven-clean-plugin</artifactId>
-                    <version>${maven.plugin.version.clean}</version>
-                </plugin>
-                <plugin>
-                    <artifactId>maven-install-plugin</artifactId>
-                    <version>${maven.plugin.version.install}</version>
-                </plugin>
-                <plugin>
-                    <artifactId>maven-site-plugin</artifactId>
-                    <version>${maven.plugin.version.site}</version>
-                </plugin>
-                <plugin>
-                    <artifactId>maven-deploy-plugin</artifactId>
-                    <version>${maven.plugin.version.deploy}</version>
-                </plugin>
-                <plugin>
-                    <artifactId>maven-dependency-plugin</artifactId>
-                    <version>${maven.plugin.version.dependency}</version>
-                </plugin>
-                <plugin>
-                    <artifactId>maven-enforcer-plugin</artifactId>
-                    <version>${maven.plugin.version.enforcer}</version>
-                </plugin>
-                <plugin>
-                    <artifactId>maven-compiler-plugin</artifactId>
-                    <version>${maven.plugin.version.compiler}</version>
-                </plugin>
-                <plugin>
-                    <artifactId>maven-surefire-plugin</artifactId>
-                    <version>${maven.plugin.version.surefire}</version>
-                </plugin>
-                <plugin>
-                    <artifactId>maven-jar-plugin</artifactId>
-                    <version>${maven.plugin.version.jar}</version>
-                </plugin>
-                <plugin>
-                    <artifactId>maven-resources-plugin</artifactId>
-                    <version>${maven.plugin.version.resources}</version>
-                </plugin>
-                <plugin>
-                    <artifactId>maven-ejb-plugin</artifactId>
-                    <version>${maven.plugin.version.ejb}</version>
-                </plugin>
-                <plugin>
-                    <artifactId>maven-war-plugin</artifactId>
-                    <version>${maven.plugin.version.war}</version>
-                </plugin>
-                <plugin>
-                    <artifactId>maven-help-plugin</artifactId>
-                    <version>${maven.plugin.version.help}</version>
-                </plugin>
-                <plugin>
-                    <artifactId>maven-shade-plugin</artifactId>
-                    <version>${maven.plugin.version.shade}</version>
-                </plugin>
-            </plugins>
-        </pluginManagement>
-    </build>
 
     <profiles>
         <profile>
@@ -146,7 +48,86 @@
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
+            <properties>
+                <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+                <maven.minversion>3.0.4</maven.minversion>
+                <maven.plugin.version.clean>2.6.1</maven.plugin.version.clean>
+                <maven.plugin.version.install>2.5.2</maven.plugin.version.install>
+                <maven.plugin.version.site>3.4</maven.plugin.version.site>
+                <maven.plugin.version.deploy>2.8.2</maven.plugin.version.deploy>
+                <maven.plugin.version.dependency>2.9</maven.plugin.version.dependency>
+                <maven.plugin.version.enforcer>1.3.1</maven.plugin.version.enforcer>
+                <maven.plugin.version.compiler>3.2</maven.plugin.version.compiler>
+                <maven.plugin.version.surefire>2.18</maven.plugin.version.surefire>
+                <maven.plugin.version.jar>2.5</maven.plugin.version.jar>
+                <maven.plugin.version.resources>2.7</maven.plugin.version.resources>
+                <maven.plugin.version.ejb>2.4</maven.plugin.version.ejb>
+                <maven.plugin.version.war>2.5</maven.plugin.version.war>
+                <maven.plugin.version.help>2.2</maven.plugin.version.help>
+                <maven.plugin.version.shade>2.3</maven.plugin.version.shade>
+                <maven.plugin.version.wildfly>1.0.2.Final</maven.plugin.version.wildfly>
+            </properties>
             <build>
+                <pluginManagement>
+                    <plugins>
+                        <plugin>
+                            <artifactId>maven-clean-plugin</artifactId>
+                            <version>${maven.plugin.version.clean}</version>
+                        </plugin>
+                        <plugin>
+                            <artifactId>maven-install-plugin</artifactId>
+                            <version>${maven.plugin.version.install}</version>
+                        </plugin>
+                        <plugin>
+                            <artifactId>maven-site-plugin</artifactId>
+                            <version>${maven.plugin.version.site}</version>
+                        </plugin>
+                        <plugin>
+                            <artifactId>maven-deploy-plugin</artifactId>
+                            <version>${maven.plugin.version.deploy}</version>
+                        </plugin>
+                        <plugin>
+                            <artifactId>maven-dependency-plugin</artifactId>
+                            <version>${maven.plugin.version.dependency}</version>
+                        </plugin>
+                        <plugin>
+                            <artifactId>maven-enforcer-plugin</artifactId>
+                            <version>${maven.plugin.version.enforcer}</version>
+                        </plugin>
+                        <plugin>
+                            <artifactId>maven-compiler-plugin</artifactId>
+                            <version>${maven.plugin.version.compiler}</version>
+                        </plugin>
+                        <plugin>
+                            <artifactId>maven-surefire-plugin</artifactId>
+                            <version>${maven.plugin.version.surefire}</version>
+                        </plugin>
+                        <plugin>
+                            <artifactId>maven-jar-plugin</artifactId>
+                            <version>${maven.plugin.version.jar}</version>
+                        </plugin>
+                        <plugin>
+                            <artifactId>maven-resources-plugin</artifactId>
+                            <version>${maven.plugin.version.resources}</version>
+                        </plugin>
+                        <plugin>
+                            <artifactId>maven-ejb-plugin</artifactId>
+                            <version>${maven.plugin.version.ejb}</version>
+                        </plugin>
+                        <plugin>
+                            <artifactId>maven-war-plugin</artifactId>
+                            <version>${maven.plugin.version.war}</version>
+                        </plugin>
+                        <plugin>
+                            <artifactId>maven-help-plugin</artifactId>
+                            <version>${maven.plugin.version.help}</version>
+                        </plugin>
+                        <plugin>
+                            <artifactId>maven-shade-plugin</artifactId>
+                            <version>${maven.plugin.version.shade}</version>
+                        </plugin>
+                    </plugins>
+                </pluginManagement>
                 <plugins>
                     <plugin>
                         <artifactId>maven-help-plugin</artifactId>
@@ -239,7 +220,6 @@
                 </plugins>
             </build>
         </profile>
-
     </profiles>
 
 </project>
