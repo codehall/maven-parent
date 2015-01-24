@@ -10,7 +10,7 @@
     </parent>
 
     <groupId>codehall</groupId>
-    <artifactId>codehall</artifactId>
+    <artifactId>maven-parent</artifactId>
     <version>1.0.0-Alpha-1-SNAPSHOT</version>
     <packaging>pom</packaging>
 
@@ -37,15 +37,71 @@
     </distributionManagement>
 
     <properties>
-        <appserver.port.development>9990</appserver.port.development>
-        <appserver.port.staging>9990</appserver.port.staging>
-        <appserver.port.production>9990</appserver.port.production>
-        <appserver.host.staging>127.0.0.1</appserver.host.staging>
-        <appserver.host.production>127.0.0.1</appserver.host.production>
         <appserver.version>8.2.0.Final</appserver.version>
         <appserver.bom.version>8.2.1.Final</appserver.bom.version>
         <repo.address.snapshot>http://localhost</repo.address.snapshot>
         <repo.address.release>http://localhost</repo.address.release>
     </properties>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.wildfly.plugins</groupId>
+                    <artifactId>wildfly-maven-plugin</artifactId>
+                    <configuration>
+                        <hostname>${appserver.host}</hostname>
+                        <port>${appserver.port}</port>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+
+    <profiles>
+
+        <profile>
+            <id>web.development</id>
+            <activation>
+                <property>
+                    <name>platform.environment</name>
+                    <value>web.development</value>
+                </property>
+            </activation>
+            <properties>
+                <appserver.host>http://localhost</appserver.host>
+                <appserver.port>9990</appserver.port>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>web.staging</id>
+            <activation>
+                <property>
+                    <name>platform.environment</name>
+                    <value>web.staging</value>
+                </property>
+            </activation>
+            <properties>
+                <appserver.host>http://localhost</appserver.host>
+                <appserver.port>9990</appserver.port>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>web.production</id>
+            <activation>
+                <property>
+                    <name>platform.environment</name>
+                    <value>web.production</value>
+                </property>
+            </activation>
+            <properties>
+                <appserver.host>http://localhost</appserver.host>
+                <appserver.port>9990</appserver.port>
+            </properties>
+        </profile>
+
+    </profiles>
 
 </project>
