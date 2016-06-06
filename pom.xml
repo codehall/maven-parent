@@ -37,8 +37,8 @@
     </distributionManagement>
 
     <properties>
-        <appserver.version>8.2.1.Final</appserver.version>
-        <appserver.bom.version>8.2.1.Final</appserver.bom.version>
+        <appserver.version>10.0.0.Final</appserver.version>
+        <appserver.bom.version>10.0.1.Final</appserver.bom.version>
         <repo.snapshot.address>http://localhost</repo.snapshot.address>
         <repo.release.address>http://localhost</repo.release.address>
     </properties>
@@ -53,9 +53,6 @@
                     <value>web.development</value>
                 </property>
             </activation>
-            <properties>
-                <appserver.dev.port>9990</appserver.dev.port>
-            </properties>
             <build>
                 <pluginManagement>
                     <plugins>
@@ -64,7 +61,7 @@
                             <artifactId>wildfly-maven-plugin</artifactId>
                             <configuration>
                                 <hostname>http://localhost</hostname>
-                                <port>${appserver.dev.port}</port>
+                                <port>9990</port>
                             </configuration>
                         </plugin>
                     </plugins>
