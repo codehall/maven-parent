@@ -39,6 +39,8 @@
     <properties>
         <appserver.version>10.0.0.Final</appserver.version>
         <appserver.bom.version>10.0.1.Final</appserver.bom.version>
+        <maven.plugin.version.wildfly>1.0.2.Final</maven.plugin.version.wildfly>
+
         <repo.snapshot.address>http://localhost</repo.snapshot.address>
         <repo.release.address>http://localhost</repo.release.address>
     </properties>
