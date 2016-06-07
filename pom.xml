@@ -108,6 +108,22 @@
         </dependencies>
     </dependencyManagement>
 
+    <build>
+        <pluginManagement>
+            <plugins>
+
+                <!-- Third-party plugins' versions -->
+
+                <plugin>
+                    <groupId>org.wildfly.plugins</groupId>
+                    <artifactId>wildfly-maven-plugin</artifactId>
+                    <version>${maven.plugin.version.wildfly}</version>
+                </plugin>
+
+            </plugins>
+        </pluginManagement>
+    </build>
+
     <profiles>
 
         <profile>
