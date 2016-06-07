@@ -23,6 +23,15 @@
         <url>http://codehall.github.io</url>
     </organization>
 
+    <properties>
+        <appserver.version>10.0.0.Final</appserver.version>
+        <appserver.bom.version>10.0.1.Final</appserver.bom.version>
+        <maven.plugin.version.wildfly>1.0.2.Final</maven.plugin.version.wildfly>
+
+        <repo.snapshot.address>http://localhost</repo.snapshot.address>
+        <repo.release.address>http://localhost</repo.release.address>
+    </properties>
+
     <distributionManagement>
         <repository>
             <id>company-repository</id>
@@ -36,14 +45,68 @@
         </snapshotRepository>
     </distributionManagement>
 
-    <properties>
-        <appserver.version>10.0.0.Final</appserver.version>
-        <appserver.bom.version>10.0.1.Final</appserver.bom.version>
-        <maven.plugin.version.wildfly>1.0.2.Final</maven.plugin.version.wildfly>
+    <dependencyManagement>
+        <dependencies>
 
-        <repo.snapshot.address>http://localhost</repo.snapshot.address>
-        <repo.release.address>http://localhost</repo.release.address>
-    </properties>
+            <dependency>
+                <groupId>org.postgresql</groupId>
+                <artifactId>postgresql</artifactId>
+                <version>9.4.1208.jre7</version>
+            </dependency>
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>4.12</version>
+            </dependency>
+
+            <!-- Convergence fixes -->
+
+            <dependency>
+                <groupId>org.jboss.marshalling</groupId>
+                <artifactId>jboss-marshalling</artifactId>
+                <version>1.4.10.Final</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jboss.marshalling</groupId>
+                <artifactId>jboss-marshalling-river</artifactId>
+                <version>1.4.10.Final</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jboss.remoting</groupId>
+                <artifactId>jboss-remoting</artifactId>
+                <version>4.0.21.Final</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jboss.xnio</groupId>
+                <artifactId>xnio-nio</artifactId>
+                <version>3.3.6.Final</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jboss.xnio</groupId>
+                <artifactId>xnio-api</artifactId>
+                <version>3.3.6.Final</version>
+            </dependency>
+
+            <!-- Upper Bound fixes -->
+
+            <dependency>
+                <groupId>io.undertow</groupId>
+                <artifactId>undertow-core</artifactId>
+                <version>1.3.23.Final</version>
+            </dependency>
+
+            <!-- Bill of materials -->
+
+            <dependency>
+                <groupId>org.wildfly.bom</groupId>
+                <artifactId>wildfly-javaee7-with-tools</artifactId>
+                <version>${appserver.bom.version}</version>
+                <scope>import</scope>
+                <type>pom</type>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
 
     <profiles>
 
@@ -116,6 +179,117 @@
                         </plugin>
                     </plugins>
                 </pluginManagement>
+            </build>
+        </profile>
+
+        <profile>
+            <id>test-environment.development</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+                <property>
+                    <name>test-environment</name>
+                    <value>development</value>
+                </property>
+            </activation>
+            <dependencies>
+                <dependency>
+                    <groupId>org.wildfly</groupId>
+                    <artifactId>wildfly-arquillian-container-remote</artifactId>
+                    <scope>test</scope>
+                </dependency>
+            </dependencies>
+            <build>
+                <testResources>
+                    <testResource>
+                        <directory>src/test/resources</directory>
+                    </testResource>
+                    <testResource>
+                        <directory>src/test/resources-test-development</directory>
+                    </testResource>
+                </testResources>
+                <plugins>
+                    <plugin>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <configuration>
+                            <systemProperties>
+                                <property>
+                                    <name>arquillian.launch</name>
+                                    <value>wildfly-remote</value>
+                                </property>
+                            </systemProperties>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+        <profile>
+            <id>test-environment.ci</id>
+            <activation>
+                <property>
+                    <name>test-environment</name>
+                    <value>ci</value>
+                </property>
+            </activation>
+            <dependencies>
+                <dependency>
+                    <groupId>org.wildfly</groupId>
+                    <artifactId>wildfly-arquillian-container-managed</artifactId>
+                    <scope>test</scope>
+                </dependency>
+            </dependencies>
+            <build>
+                <testResources>
+                    <testResource>
+                        <directory>src/test/resources</directory>
+                    </testResource>
+                    <testResource>
+                        <directory>src/test/resources-test-ci</directory>
+                    </testResource>
+                </testResources>
+                <plugins>
+                    <plugin>
+                        <artifactId>maven-dependency-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>unpack-managed-container</id>
+                                <phase>process-test-classes</phase>
+                                <goals>
+                                    <goal>unpack</goal>
+                                </goals>
+                                <configuration>
+                                    <artifactItems>
+                                        <artifactItem>
+                                            <groupId>org.wildfly</groupId>
+                                            <artifactId>wildfly-dist</artifactId>
+                                            <version>${appserver.version}</version>
+                                            <type>zip</type>
+                                            <overWrite>false</overWrite>
+                                            <outputDirectory>target</outputDirectory>
+                                        </artifactItem>
+                                    </artifactItems>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <configuration>
+                            <forkMode>always</forkMode>
+                            <systemProperties>
+                                <property>
+                                    <name>java.util.logging.manager</name>
+                                    <value>org.jboss.logmanager.LogManager</value>
+                                </property>
+                                <property>
+                                    <name>arquillian.launch</name>
+                                    <value>wildfly-managed</value>
+                                </property>
+                            </systemProperties>
+                            <redirectTestOutputToFile>false</redirectTestOutputToFile>
+                        </configuration>
+                    </plugin>
+                </plugins>
             </build>
         </profile>
 
